@@ -51,8 +51,8 @@ func InitLogger(logLevel string, logFilePath string, logToStdout bool) (*zap.Log
 
 // CloseLogger flushes any buffered log entries.
 // Should be called using defer in your main function.
-func CloseLogger() {
-	err := zap.L().Sync()
+func CloseLogger(l *zap.Logger) {
+	err := l.Sync()
 	if err != nil {
 		// Define the "whitelist" of errors to ignore.
 		// These are safe to ignore because they simply mean the
